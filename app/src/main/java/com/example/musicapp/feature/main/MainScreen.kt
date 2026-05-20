@@ -36,15 +36,16 @@ fun MainScreen(
             }
         }
         Column {
-            listOfTiles.chunked(3).forEach { rowItems ->
+            listOfTiles.chunked(3).forEachIndexed { rowIndex, rowItems ->
                 Row(modifier = Modifier.weight(1f)) {
-                    rowItems.forEachIndexed { index, tile ->
+                    rowItems.forEachIndexed { lineIndex, tile ->
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .weight(1f)
 
                         ) {
+                            val index = lineIndex + (3 * rowIndex)
                             MusicTile(
                                 tile = tile,
                                 onClick = { viewModel.onPadClick(index) }
