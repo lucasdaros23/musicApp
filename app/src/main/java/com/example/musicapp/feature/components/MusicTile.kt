@@ -18,6 +18,7 @@ import com.example.musicapp.ui.theme.Size
 @Composable
 fun MusicTile(
     tile: Tile,
+    onClick: () -> Unit
 ) {
     val shape = RoundedCornerShape(size = Size.tiny)
     Box(
@@ -31,7 +32,7 @@ fun MusicTile(
             )
             .background(color = tile.color, shape = shape)
             .combinedClickable(
-                onClick = {},
+                onClick = { onClick() },
                 onLongClick = {}
             ),
         contentAlignment = Alignment.Center
@@ -48,6 +49,7 @@ fun MusicTile(
 @Composable
 private fun MusicTilePreview() {
     MusicTile(
-        listOfTiles.first()
+        listOfTiles.first(),
+        {}
     )
 }

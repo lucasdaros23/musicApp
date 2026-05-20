@@ -1,5 +1,7 @@
 package com.example.musicapp.feature.main
 
+import android.annotation.SuppressLint
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,13 +10,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.musicapp.data.audio.SoundPoolRepository
 import com.example.musicapp.feature.components.MusicTile
 import com.example.musicapp.feature.components.SidebarIconButton
 import com.example.musicapp.ui.theme.Size
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(
+    viewModel: MainViewModel,
+    modifier: Modifier = Modifier,
+) {
     Row(
         modifier = modifier
             .fillMaxSize()
@@ -31,14 +38,17 @@ fun MainScreen(modifier: Modifier = Modifier) {
         Column {
             listOfTiles.chunked(3).forEach { rowItems ->
                 Row(modifier = Modifier.weight(1f)) {
-                    rowItems.forEach { tile ->
+                    rowItems.forEachIndexed { index, tile ->
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .weight(1f)
 
                         ) {
-                            MusicTile(tile = tile)
+                            MusicTile(
+                                tile = tile,
+                                onClick = { viewModel.onPadClick(index) }
+                            )
                         }
                     }
                 }
@@ -47,8 +57,9 @@ fun MainScreen(modifier: Modifier = Modifier) {
     }
 }
 
+@SuppressLint("ViewModelConstructorInComposable")
 @Preview(showBackground = true, device = "spec:width=640dp,height=360dp,orientation=landscape")
 @Composable
 private fun MainScreenPreview() {
-    MainScreen()
+    MainScreen(MainViewModel(SoundPoolRepository(LocalContext.current)))
 }

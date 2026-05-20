@@ -8,9 +8,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.musicapp.feature.main.MainScreen
+import com.example.musicapp.feature.main.MainViewModel
 import com.example.musicapp.ui.theme.MusicAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +22,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             MusicAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding))
+                    val mainViewModel: MainViewModel = hiltViewModel()
+                    MainScreen(
+                        modifier = Modifier.padding(innerPadding),
+                        viewModel = mainViewModel
+                    )
                 }
             }
         }

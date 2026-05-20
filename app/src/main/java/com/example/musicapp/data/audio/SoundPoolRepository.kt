@@ -3,7 +3,9 @@ package com.example.musicapp.data.audio
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
+import com.example.musicapp.R
 import jakarta.inject.Inject
+import kotlin.let
 
 class SoundPoolRepository @Inject constructor(
     private val context: Context
@@ -37,7 +39,11 @@ class SoundPoolRepository @Inject constructor(
     }
 
     private fun loadSounds() {
-        // botar os sound maps aqui
+        soundPool?.let { pool ->
+            soundMap[0] = pool.load(context, R.raw.kick_808, 1)
+            soundMap[1] = pool.load(context, R.raw.hihat_808, 1)
+            soundMap[2] = pool.load(context, R.raw.clap_808, 1)
+        }
     }
 
     fun playSound(padIndex: Int, volume: Float = 1f) {
