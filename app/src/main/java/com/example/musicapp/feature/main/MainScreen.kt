@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.musicapp.data.audio.SoundPoolRepository
+import com.example.musicapp.data.repository.SoundPoolRepository
 import com.example.musicapp.feature.components.MusicTile
 import com.example.musicapp.feature.components.SidebarIconButton
 import com.example.musicapp.ui.theme.Size
@@ -43,7 +43,6 @@ fun MainScreen(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .weight(1f)
-
                         ) {
                             val index = lineIndex + (3 * rowIndex)
                             MusicTile(

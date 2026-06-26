@@ -1,7 +1,7 @@
 package com.example.musicapp.di
 
 import android.content.Context
-import com.example.musicapp.data.audio.SoundPoolRepository
+import com.example.musicapp.data.repository.SoundPoolRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

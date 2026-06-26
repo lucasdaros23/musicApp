@@ -1,7 +1,7 @@
 package com.example.musicapp.feature.main
 
 import androidx.lifecycle.ViewModel
-import com.example.musicapp.data.audio.SoundPoolRepository
+import com.example.musicapp.data.repository.SoundPoolRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 

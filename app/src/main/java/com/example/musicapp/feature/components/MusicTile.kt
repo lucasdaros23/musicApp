@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.musicapp.feature.main.listOfTiles
-import com.example.musicapp.model.Tile
+import com.example.musicapp.data.entity.Tile
 import com.example.musicapp.ui.theme.Size
 
 @Composable
@@ -27,10 +27,10 @@ fun MusicTile(
             .padding(Size.mini)
             .border(
                 width = Size.mini,
-                color = tile.border,
+                color = tile.color.border,
                 shape = shape
             )
-            .background(color = tile.color, shape = shape)
+            .background(color = tile.color.main, shape = shape)
             .combinedClickable(
                 onClick = { onClick() },
                 onLongClick = {}
@@ -38,8 +38,8 @@ fun MusicTile(
         contentAlignment = Alignment.Center
     ) {
         TileIcon(
-            backgroundColor = tile.lightColor,
-            iconColor = tile.color,
+            backgroundColor = tile.color.light,
+            iconColor = tile.color.main,
             id = tile.icon,
         )
     }
