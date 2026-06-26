@@ -41,6 +41,7 @@ fun MusicTile(
             backgroundColor = tile.lightColor,
             iconColor = tile.color,
             id = tile.icon,
+            size = Size.huge
         )
     }
 }

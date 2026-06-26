@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import com.example.musicapp.R
 import com.example.musicapp.ui.theme.Size
 import com.example.musicapp.ui.theme.orange
@@ -41,11 +42,12 @@ fun TileIcon(
     backgroundColor: Color,
     iconColor: Color,
     id: Int,
+    size: Dp
 ) {
     Box(
         modifier = Modifier
             .background(color = backgroundColor, shape = CircleShape)
-            .size(Size.huge)
+            .size(size)
             .padding(Size.micro)
         ,
         contentAlignment = Alignment.Center
@@ -95,5 +97,6 @@ private fun TileIconPreview() {
         backgroundColor = orangeLight,
         iconColor = orange,
         id = R.drawable.drum_icon,
+        size = Size.huge
     )
 }

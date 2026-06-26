@@ -32,6 +32,6 @@ val listOfTiles = listOf(
 
 val listOfSidebarButtons = listOf(
     R.drawable.edit_icon to {},
-    R.drawable.edit_icon to {},
-    R.drawable.edit_icon to {},
+    R.drawable.metronome_icon to {},
+    R.drawable.record_icon to {},
 )
